@@ -1,8 +1,8 @@
 // ---------------------------------
 // Plugin: profile
 // Descrição: Busca e exibe informações de um perfil do GitHub usando as APIs nativas.
-// Autor: [Seu Nome]
-// Versão: 1.1 (com correção para valores nulos)
+// Autor: Bernardo Alvim
+// Versão: 1.2 (final, com correção para todos os valores)
 // ---------------------------------
 
 function runProfileViewer() void {
@@ -31,14 +31,13 @@ function runProfileViewer() void {
 
     print("Perfil encontrado!");
     print("");
+    
+    // --- CORREÇÃO APLICADA EM TODAS AS LINHAS ---
     print("Nome: " + valueToString(data.name));
     print("Login: @" + valueToString(data.login));
     print("ID: " + valueToString(data.id));
     print("Localizacao: " + valueToString(data.location));
-    
-    // --- CORREÇÃO AQUI ---
-    // Usamos valueToString para converter 'nil' na string "nil" de forma segura.
-    print("Bio: " + valueToString(data.bio));
+    print("Bio: " + valueToString(data.bio)); // A correção principal
     
     print("");
     print("Repositorios Publicos: " + valueToString(data.public_repos));
