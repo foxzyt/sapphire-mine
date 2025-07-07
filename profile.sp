@@ -1,8 +1,8 @@
 // ---------------------------------
 // Plugin: profile
 // Descrição: Busca e exibe informações de um perfil do GitHub usando as APIs nativas.
-// Autor: Bernardo Alvim
-// Versão: 1.0
+// Autor: [Seu Nome]
+// Versão: 1.1 (com correção para valores nulos)
 // ---------------------------------
 
 function runProfileViewer() void {
@@ -19,29 +19,27 @@ function runProfileViewer() void {
 
     if (jsonResponse == nil) {
         print("ERRO: Falha ao contatar a API do GitHub.");
-        print("Verifique sua conexao com a internet ou se a URL esta correta.");
         return;
     }
 
     var data = JSON.parse(jsonResponse);
 
-    if (data == nil) {
-        print("ERRO: Nao foi possivel entender a resposta da API.");
-        return;
-    }
-
-    if (data.message == "Not Found") {
-        print("ERRO: Usuario '" + username + "' nao foi encontrado.");
+    if (data == nil or data.message == "Not Found") {
+        print("ERRO: Usuario '" + username + "' nao encontrado.");
         return;
     }
 
     print("Perfil encontrado!");
     print("");
-    print("Nome: " + data.name);
-    print("Login: @" + data.login);
-    print("ID: " + valueToString(data.id)); 
-    print("Localizacao: " + data.location);
-    print("Bio: " + data.bio);
+    print("Nome: " + valueToString(data.name));
+    print("Login: @" + valueToString(data.login));
+    print("ID: " + valueToString(data.id));
+    print("Localizacao: " + valueToString(data.location));
+    
+    // --- CORREÇÃO AQUI ---
+    // Usamos valueToString para converter 'nil' na string "nil" de forma segura.
+    print("Bio: " + valueToString(data.bio));
+    
     print("");
     print("Repositorios Publicos: " + valueToString(data.public_repos));
     print("Seguidores: " + valueToString(data.followers));
