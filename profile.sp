@@ -1,19 +1,24 @@
-function fetch_user(string username) var {
+JsonObject last_result = nil;
+
+function fetch_user(string username) void {
     if (username == nil or username == "") {
-        return nil; 
+        last_result = nil;
+        return;
     }
 
     string url = "https://api.github.com/users/" + username;
-
     string jsonResponse = HTTP.get(url);
+
     if (jsonResponse == nil) {
-        return nil;
+        last_result = nil;
+        return;
     }
 
-    var data = JSON.parse(jsonResponse);
+    JsonObject data = JSON.parse(jsonResponse);
     if (data == nil or data.message == "Not Found") {
-        return nil;
+        last_result = nil;
+        return;
     }
 
-    return data;
+    last_result = data;
 }
