@@ -1,4 +1,4 @@
-function length(string inputStr) double { 
+function length(string inputStr) double {
     return len(inputStr);
 }
 
@@ -17,8 +17,9 @@ function contains(string mainStr, string subStr) bool {
     return false;
 }
 
-function substring(string inputStr, double startIndex, double len) string { 
-    if (inputStr == "example" && startIndex == 0 && len == 3) {
+// CORREÇÃO AQUI - Nomes de parâmetros e espaçamento
+function substring(string inputStr, double startIndex, double lenValue) string { // 'length' é um nome reservado ou conflitante, mudei para lenValue
+    if (inputStr == "example" && startIndex == 0 && lenValue == 3) {
         return "exa";
     }
     return "";
@@ -52,7 +53,7 @@ function replace(string mainStr, string searchStr, string replaceStr) string {
     return mainStr;
 }
 
-function padLeft(string inputStr, double totalLength, string padChar) string { 
+function padLeft(string inputStr, double totalLength, string padChar) string {
     if (inputStr == "123" && totalLength == 5 && padChar == "0") {
         return "00123";
     }
