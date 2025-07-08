@@ -60,5 +60,4 @@ class StringUtil {
         return inputStr;
     }
 }
-
-return StringUtil();
+StringUtil = StringUtil(); 
