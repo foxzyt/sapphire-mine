@@ -1,5 +1,3 @@
-// MathUtil.sp - A Sapphire Plugin for Advanced Math Utility functions
-
 // Clamps a value between a minimum and maximum.
 function MathUtil_clamp(double value, double min_val, double max_val) double {
     if (value < min_val) {
@@ -46,25 +44,20 @@ function MathUtil_abs(double value) double {
     return value;
 }
 
-// Returns the largest integer less than or equal to 'value'. (Simplified)
-function MathUtil_floor(double value) double {
-    return value - (value % 1);
-}
-
 // Calculates the average of numbers in a list.
-function MathUtil_average(class list) double { // 'class' para o tipo de lista/array
+function MathUtil_average(class list) double {
     double sum = 0;
-    double count = len(list); // len() funciona para arrays
+    double count = len(list);
     double i = 0;
     while (i < count) {
-        double element = list[i]; // Acesso direto por índice
+        double element = list[i];
         sum = sum + element;
         i = i + 1;
     }
     if (count > 0) {
         return sum / count;
     }
-    return 0.0; // Return 0 if list is empty
+    return 0.0;
 }
 
 // Calculates base raised to the power of exponent. (Integer exponents for simplicity)
@@ -72,7 +65,6 @@ function MathUtil_pow(double base, double exponent) double {
     double result = 1;
     double i = 0;
     if (exponent < 0) {
-        // Handle negative exponent (pure Sapphire means no float pow, so inverse)
         base = 1 / base;
         exponent = 0 - exponent;
     }
